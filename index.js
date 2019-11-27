@@ -2,9 +2,12 @@ const express = require("express")
 const app = express()
 const cors = require("cors")
 const bodyParser = require("body-parser")
-const PORT = process.env.PORT || 3000 
+const { PORT, DATABASE, DATABASE_PASSWORD } = require("./config");
 
 console.log(PORT)
+console.log(DATABASE)
+console.log(DATABASE_PASSWORD)
+
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
