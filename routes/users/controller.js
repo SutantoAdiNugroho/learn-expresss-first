@@ -66,24 +66,41 @@ module.exports = {
             })
     },
     login: (req, res) => {
-        const { body } = req
         get()
-            .collection("users")
-            .findOne({email: body.email, password: body.password})
-            .then(response => {
-                const {email, firstName} = response;
-                res.status(200).json({
-                    message: "Login Success",
-                    data: {email, firstName}
-                })
-            })
-
-        const data = get()
-            .collection("users")
-            .findOne({ email: email, password: password });
-
-            if (!data) {
-                res.send({ message: 'Email or password is wrong!' })
+        .collection('users')
+        .find({
+            email: req.body.email
+        },
+            {
+                projection: {
+                    _id: 0,
+                    email: 0
+                }
             }
+        )
+        .toArray()
+        .then(result => {
+            if (result.length > 0) {
+                let item = result.find(item => {
+                    return item.password === req.body.password
+                })
+
+                if (item != null) {
+                    res.send({
+                        id: item.id,
+                        firstName: item.firstName,
+                        lastName: item.lastName
+                    })
+                } else {
+                    res.send({
+                        message: 'Email or password is wrong!'
+                    })
+                }
+            } else {
+                res.send({
+                    message: 'Email or password is wrong!'
+                })
+            }
+        })
     }
 };
