@@ -1,8 +1,13 @@
 const express = require("express")
 const router = express.Router()
 
-const { getAll } = require("./controller")
+const usersController = require("./controller")
 
-router.get("/", getAll)
+//users
+router.get("/", usersController.getAll)
+router.get("/:id", usersController.getOne)
+router.delete("/:id", usersController.deleteOne)
+router.post("/", usersController.addOne)
+router.put("/", usersController.updateOne)
 
 module.exports = router
