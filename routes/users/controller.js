@@ -87,9 +87,8 @@ module.exports = {
 
                 if (item != null) {
                     res.send({
-                        id: item.id,
                         firstName: item.firstName,
-                        lastName: item.lastName
+                        email: item.email
                     })
                 } else {
                     res.send({
