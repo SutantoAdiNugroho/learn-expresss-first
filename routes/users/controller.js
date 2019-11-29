@@ -67,7 +67,6 @@ module.exports = {
     },
     login: (req, res) => {
         const { body } = req;
-
         get()
             .collection("users")
             .findOne({ email: body.email, password: body.password })

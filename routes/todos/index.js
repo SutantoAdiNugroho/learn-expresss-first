@@ -9,5 +9,6 @@ router.get("/:id", todoController.getOne)
 router.delete("/:id", todoController.deleteOne)
 router.post("/", todoController.addOne)
 router.put("/", todoController.updateOne)
+router.get("/email/:email", todoController.getByEmail)
 
 module.exports = router;

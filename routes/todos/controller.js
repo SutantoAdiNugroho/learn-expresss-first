@@ -64,5 +64,17 @@ module.exports = {
             .catch(error => {
                 console.log(error);
             })
-    }
+    },
+    getByEmail: (req, res) => {
+        get()
+            .collection("todos-data")
+            .find({ email: req.params.email })
+            .toArray()
+            .then(result => {
+                res.send({ message: "Get all datas by email", data: result });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
 };
