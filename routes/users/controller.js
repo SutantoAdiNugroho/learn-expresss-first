@@ -77,5 +77,13 @@ module.exports = {
                     data: {email, firstName}
                 })
             })
+
+        const data = get()
+            .collection("users")
+            .findOne({ email: email, password: password });
+
+            if (!data) {
+                res.send({ message: 'Email or password is wrong!' })
+            }
     }
 };
