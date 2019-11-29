@@ -71,10 +71,10 @@ module.exports = {
             .collection("users")
             .findOne({email: body.email, password: body.password})
             .then(response => {
-                const {email, fullName} = response;
+                const {email, firstName} = response;
                 res.status(200).json({
                     message: "Login Success",
-                    data: {email, fullName}
+                    data: {email, firstName}
                 })
             })
     }
