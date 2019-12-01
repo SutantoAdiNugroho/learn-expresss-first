@@ -10,14 +10,14 @@ const signin = async ({ email, password }) => {
         if (!email) {
             result.email = "Required";
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-            result.email = "Format Email salah";
+            result.email = "Invalid email format";
         }
 
         if (!password) {
             result.password = "Required";
         } else if (password) {
             if (!data) {
-                result.password = "Email/Password Salah";
+                result.password = "The email or password you entered is incorrect";
             }
         }
 
