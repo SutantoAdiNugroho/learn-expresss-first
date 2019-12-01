@@ -1,4 +1,5 @@
 const signup = require("./signup");
+const signin = require("./signin")
 
 module.exports = () => {
     const validate = async (req, res) => {
@@ -13,6 +14,8 @@ module.exports = () => {
             switch (id) {
                 case "signup":
                     return res.json(await signup(body));
+                case "signin":
+                    return res.json(await signin(body));
                 default:
                     return res.json(result);
             }
