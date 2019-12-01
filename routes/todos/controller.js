@@ -23,11 +23,12 @@ module.exports = {
         res.send(findOne);
     },
     deleteOne: (req, res) => {
+        const { id } = req.params;
         get()
             .collection("todos-data")
-            .deleteOne({id : req.params.id})
+            .deleteOne({ _id: objectId(id) })
             .then(result => {
-                res.send({message : "Data successfully delete", data: result})
+                res.send({message : `Data successfully delete with id ${id}`, data: result})
             })
             .catch(error => {
                 console.log(error);
