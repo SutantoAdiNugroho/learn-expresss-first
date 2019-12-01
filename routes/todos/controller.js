@@ -1,5 +1,6 @@
 const { todo: todos } = require("../../models");
 const {get} = require("../../config")
+const objectId = require("mongodb").ObjectId
 
 module.exports = {
     getAll: (req, res) => {
@@ -44,11 +45,12 @@ module.exports = {
             })
     },
     updateOne: (req, res) => {
+        const {id} = req.params;
         get()
             .collection("todos-data")
-            .update({id : req.body.id}, {$set : (req.body)})
+            .updateOne({ _id : objectId(id) }, {$set : (req.body)})
             .then(result => {
-                res.send({message : "Data successfully update", data: result})
+                res.send({message : `Data successfully update with id ${id}`, data: result})
             })
             .catch(error => {
                 console.log(error);
