@@ -6,5 +6,6 @@ module.exports = {
     DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
     DATABASE_NAME : process.env.DATABASE_NAME,
     DATABASE_NAME_USERS : process.env.DATABASE_NAME_USERS,
-    DATABASE_HOST_LIVE : process.env.DATABASE_HOST_LIVE
+    DATABASE_HOST_LIVE : process.env.DATABASE_HOST_LIVE,
+    JWT_SECRET_KEY : process.env.JWT_SECRET_KEY
 };

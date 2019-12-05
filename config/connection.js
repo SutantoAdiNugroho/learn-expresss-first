@@ -6,7 +6,7 @@ let mongo
 
 const connect = callback => {
     MongoClient.connect(
-        DATABASE_HOST || DATABASE_HOST_LIVE,
+        DATABASE_HOST_LIVE,
         {useNewUrlParser: true, useUnifiedTopology: true},
         function(e, client) {
             if (e) {
