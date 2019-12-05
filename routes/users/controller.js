@@ -89,12 +89,8 @@ module.exports = {
         if (compared === true) {
           const { email, firstName, _id } = response;
           const token = jwt.sign({
-            email, firstName
-          }, JWT_SECRET_KEY, {
-            expiresIn: "30s"
-          })
-          console.log(token);
-          
+            email, firstName, _id
+          }, JWT_SECRET_KEY)
           res.status(200).json({
             message: "Login successfull",
             data: { token }
